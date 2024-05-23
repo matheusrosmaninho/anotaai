@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\BankResource;
 use App\Models\Bank;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class BankController extends Controller
      */
     public function index()
     {
-        return Bank::all();
+        return BankResource::collection(Bank::all());
     }
 
     /**
@@ -29,7 +30,8 @@ class BankController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $bank = Bank::findOrFail($id);
+        return new BankResource($bank);
     }
 
     /**
