@@ -29,8 +29,6 @@ class BanksSeeder extends Seeder
                 'ispb' => $bank['ispb'] ?? null,
                 'code' => $bank['code'],
             ]);
-
-            echo sprintf('O banco %s foi criado com sucesso', $bank['name'] . PHP_EOL);
         }
     }
 }
