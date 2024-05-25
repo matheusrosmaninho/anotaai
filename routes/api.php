@@ -9,8 +9,8 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::group(['prefix'=> 'v1'], function () {
-    Route::apiResource('banks', BankController::class);
+Route::middleware('auth:sanctum')->group(function() {
+    Route::apiResource('v1/banks', BankController::class);
 });
 
 Route::post('/register', [AuthController::class, 'register']);
